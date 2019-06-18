@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.e3.mapper.SolrJItemMapper" >
+    <select id="findItemList" resultType="com.e3.common.pojo.SolrJItem">
+     SELECT
+	     i.id,i.title,i.sell_point,i.price,i.image,c.name category_name
+     FROM
+	     tb_item i
+     LEFT OUTER JOIN tb_item_cat c ON i.cid = c.id;
+    </select>
+    <select id="findItenById" resultType="com.e3.common.pojo.SolrJItem">
+    SELECT
+	     i.id,i.title,i.sell_point,i.price,i.image,c.name category_name
+     FROM
+	     tb_item i
+     LEFT OUTER JOIN tb_item_cat c ON i.cid = c.id where i.id=#{id}
+
+    </select>
+</mapper>
